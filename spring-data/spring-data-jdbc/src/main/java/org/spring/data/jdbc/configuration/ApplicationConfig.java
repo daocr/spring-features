@@ -2,8 +2,6 @@ package org.spring.data.jdbc.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.convert.converter.Converter;
-import org.springframework.data.convert.ReadingConverter;
 import org.springframework.data.jdbc.repository.config.AbstractJdbcConfiguration;
 import org.springframework.data.jdbc.repository.config.EnableJdbcRepositories;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcOperations;
@@ -14,8 +12,6 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.transaction.TransactionManager;
 
 import javax.sql.DataSource;
-import java.time.LocalDateTime;
-import java.util.Date;
 
 /**
  * AbstractJdbcConfiguration 提供了各种默认配置
