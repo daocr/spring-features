@@ -1,7 +1,10 @@
 package org.example.generator.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.example.generator.domain.LeadsGroup;
+
+import java.util.List;
 
 /**
 * @author daocr
@@ -24,5 +27,7 @@ public interface LeadsGroupMapper {
     int updateByPrimaryKeySelective(LeadsGroup record);
 
     int updateByPrimaryKey(LeadsGroup record);
+
+    LeadsGroup selectByIdIn(@Param("ids") List<String> ids);
 
 }

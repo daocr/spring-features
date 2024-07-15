@@ -1,7 +1,11 @@
 package org.example;
 
+import org.example.generator.domain.LeadsGroup;
 import org.example.generator.mapper.LeadsGroupMapper;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Hello world!
@@ -13,5 +17,8 @@ public class App {
 
         System.out.println(mapper.selectByPrimaryKey(1L));
 
+        List<String> list = Arrays.asList("'[1]'", "'[2]'");
+
+        LeadsGroup leadsGroup = mapper.selectByIdIn(list);
     }
 }

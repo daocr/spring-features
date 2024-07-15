@@ -120,4 +120,17 @@
             is_delete =  #{isDelete,jdbcType=TINYINT}
         where   id = #{id,jdbcType=INTEGER} 
     </update>
+
+
+    <select id="selectByIdIn" resultType="org.example.generator.domain.LeadsGroup">
+        select * from leads_group
+        <where>
+            <foreach collection="ids" item="item" index="index" open="(" separator="OR" close=")">
+                JSON_CONTAINS(tags, ${item})
+            </foreach>
+        </where>
+
+
+    </select>
+
 </mapper>
