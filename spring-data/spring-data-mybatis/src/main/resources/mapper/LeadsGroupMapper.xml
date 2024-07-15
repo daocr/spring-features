@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.generator.mapper.LeadsGroupMapper">
+
+    <resultMap id="BaseResultMap" type="org.example.generator.domain.LeadsGroup">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="groupType" column="group_type" jdbcType="VARCHAR"/>
+            <result property="name" column="name" jdbcType="VARCHAR"/>
+            <result property="tags" column="tags" jdbcType="OTHER"/>
+            <result property="fform" column="fform" jdbcType="OTHER"/>
+            <result property="channel" column="channel" jdbcType="OTHER"/>
+            <result property="preference" column="preference" jdbcType="OTHER"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+            <result property="isDelete" column="is_delete" jdbcType="TINYINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,group_type,name,
+        tags,fform,channel,
+        preference,create_time,update_time,
+        is_delete
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from leads_group
+        where  id = #{id,jdbcType=INTEGER} 
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from leads_group
+        where  id = #{id,jdbcType=INTEGER} 
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="org.example.generator.domain.LeadsGroup" useGeneratedKeys="true">
+        insert into leads_group
+        ( id,group_type,name
+        ,tags,fform,channel
+        ,preference,create_time,update_time
+        ,is_delete)
+        values (#{id,jdbcType=INTEGER},#{groupType,jdbcType=VARCHAR},#{name,jdbcType=VARCHAR}
+        ,#{tags,jdbcType=OTHER},#{fform,jdbcType=OTHER},#{channel,jdbcType=OTHER}
+        ,#{preference,jdbcType=OTHER},#{createTime,jdbcType=TIMESTAMP},#{updateTime,jdbcType=TIMESTAMP}
+        ,#{isDelete,jdbcType=TINYINT})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="org.example.generator.domain.LeadsGroup" useGeneratedKeys="true">
+        insert into leads_group
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="id != null">id,</if>
+                <if test="groupType != null">group_type,</if>
+                <if test="name != null">name,</if>
+                <if test="tags != null">tags,</if>
+                <if test="fform != null">fform,</if>
+                <if test="channel != null">channel,</if>
+                <if test="preference != null">preference,</if>
+                <if test="createTime != null">create_time,</if>
+                <if test="updateTime != null">update_time,</if>
+                <if test="isDelete != null">is_delete,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="id != null">#{id,jdbcType=INTEGER},</if>
+                <if test="groupType != null">#{groupType,jdbcType=VARCHAR},</if>
+                <if test="name != null">#{name,jdbcType=VARCHAR},</if>
+                <if test="tags != null">#{tags,jdbcType=OTHER},</if>
+                <if test="fform != null">#{fform,jdbcType=OTHER},</if>
+                <if test="channel != null">#{channel,jdbcType=OTHER},</if>
+                <if test="preference != null">#{preference,jdbcType=OTHER},</if>
+                <if test="createTime != null">#{createTime,jdbcType=TIMESTAMP},</if>
+                <if test="updateTime != null">#{updateTime,jdbcType=TIMESTAMP},</if>
+                <if test="isDelete != null">#{isDelete,jdbcType=TINYINT},</if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="org.example.generator.domain.LeadsGroup">
+        update leads_group
+        <set>
+                <if test="groupType != null">
+                    group_type = #{groupType,jdbcType=VARCHAR},
+                </if>
+                <if test="name != null">
+                    name = #{name,jdbcType=VARCHAR},
+                </if>
+                <if test="tags != null">
+                    tags = #{tags,jdbcType=OTHER},
+                </if>
+                <if test="fform != null">
+                    fform = #{fform,jdbcType=OTHER},
+                </if>
+                <if test="channel != null">
+                    channel = #{channel,jdbcType=OTHER},
+                </if>
+                <if test="preference != null">
+                    preference = #{preference,jdbcType=OTHER},
+                </if>
+                <if test="createTime != null">
+                    create_time = #{createTime,jdbcType=TIMESTAMP},
+                </if>
+                <if test="updateTime != null">
+                    update_time = #{updateTime,jdbcType=TIMESTAMP},
+                </if>
+                <if test="isDelete != null">
+                    is_delete = #{isDelete,jdbcType=TINYINT},
+                </if>
+        </set>
+        where   id = #{id,jdbcType=INTEGER} 
+    </update>
+    <update id="updateByPrimaryKey" parameterType="org.example.generator.domain.LeadsGroup">
+        update leads_group
+        set 
+            group_type =  #{groupType,jdbcType=VARCHAR},
+            name =  #{name,jdbcType=VARCHAR},
+            tags =  #{tags,jdbcType=OTHER},
+            fform =  #{fform,jdbcType=OTHER},
+            channel =  #{channel,jdbcType=OTHER},
+            preference =  #{preference,jdbcType=OTHER},
+            create_time =  #{createTime,jdbcType=TIMESTAMP},
+            update_time =  #{updateTime,jdbcType=TIMESTAMP},
+            is_delete =  #{isDelete,jdbcType=TINYINT}
+        where   id = #{id,jdbcType=INTEGER} 
+    </update>
+</mapper>
